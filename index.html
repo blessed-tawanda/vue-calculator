@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Blessed Mahuni: Calculator</title>
+        <script src="\vue.js"></script>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                font-size: 62.5%;
+            }
+
+            .calculator{
+                height: 58rem;
+                width: 30rem;
+                background-color: #f3f3f3;
+                margin: 4rem auto;
+                padding: .2rem;
+                border-radius: 5px;
+                box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .3)
+            }
+            .screen {
+                border: #333 solid 1px;
+                border-radius: 2px;
+                width: 95%;
+                margin: 1rem auto;
+                height: 20%;
+                background-color: #fff;
+                font-size: 3rem;
+                
+            }
+            
+            .buttonGrid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+/*             
+            .u-margin-left {
+                margin-left: 5rem;
+            } */
+
+            .button {
+                width: 8rem;
+                height: 8rem;
+                background-color: #BDBDBD;
+                margin: .3rem;
+                font-size: 4rem;
+                text-align: center;
+                padding-top: 1.5rem;
+                /* box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .3) */
+                border-radius: 3px;
+            }
+            
+            .button:hover {
+                cursor: pointer;
+            }
+            
+
+        </style>
+
+    </head>
+    <body>
+    
+    <div id="app" class="calculator">
+        <div class="screen">
+            {{display}}
+        </div>
+        <div class="buttonGrid">
+            <div class="button" v-on:click="one">1</div>
+            <div class="button" v-on:click="two">2</div>
+            <div class="button" v-on:click="three">3</div>
+            <div class="button" v-on:click="four">4</div>
+            <div class="button" v-on:click="five">5</div>
+            <div class="button" v-on:click="six">6</div>
+            <div class="button" v-on:click="seven">7</div>
+            <div class="button" v-on:click="eight">8</div>
+            <div class="button" v-on:click="nine">9</div>
+            <div class="button" v-on:click="zero">0</div>
+            <div class="button" v-on:click="plus"> + </div>
+            <div class="button" v-on:click="sub"> - </div>
+            <div class="button" v-on:click="divide"> / </div>
+            <div class="button" v-on:click="multiply"> * </div>
+            <div class="button" v-on:click="equal"> = </div>
+        </div>
+    </div>
+    
+    </body>
+
+    <script>
+        
+        new Vue({
+            
+            el: '#app',
+            data: {
+                display: ""
+            },
+            methods: {
+                one: function() {
+                    this.autoclear()
+                    this.display += 1;
+                },
+                two: function() {
+                    this.autoclear()
+                    this.display += 2;
+                },
+                three: function() {
+                    this.autoclear()
+                    this.display += 3;
+                },
+                four: function() {
+                    this.autoclear()
+                    this.display += 4;
+                },
+                five: function() {
+                    this.autoclear()
+                    this.display += 5;
+                },
+                six: function() {
+                    this.autoclear()
+                    this.display += 6;
+                },
+                seven: function() {
+                    this.autoclear()
+                    this.display += 7;
+                },
+                eight: function() {
+                    this.autoclear()
+                    this.display += 8;
+                },
+                nine: function() {
+                    this.autoclear()
+                    this.display += 9;
+                },
+                zero: function() {
+                    this.autoclear()
+                    this.display += 0;
+                },
+                plus: function() {
+                    this.autoclear()
+                    this.display += "+";
+                },
+                sub: function() {
+                    this.autoclear()
+                    this.display += "-";
+                },
+                divide: function() {
+                    this.display += "/";
+                    this.autoclear()
+                },
+                multiply: function() {
+                    this.display += "*";
+                    this.autoclear()
+                },
+                equal: function() {
+                    this.display += "=" + eval(this.display)
+                },
+                autoclear: function() {
+                    regex = /\d=/
+                    if (regex.test(this.display))
+                        this.display = ""
+                    
+                }
+
+            }
+
+        })
+    </script>
+</html>
